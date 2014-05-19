@@ -152,6 +152,14 @@ ALTER TABLE ONLY lines
 
 
 --
+-- Name: maps_remixed_from_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY maps
+    ADD CONSTRAINT maps_remixed_from_id_fkey FOREIGN KEY (remixed_from_id) REFERENCES maps(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
