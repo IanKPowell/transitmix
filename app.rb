@@ -19,8 +19,10 @@ require 'app/routes'
 module Transitmix
   class App < Sinatra::Application
     set :root, File.expand_path('../', __FILE__)
+    set :tree_views, %w(ancestors children descendants parent root self_and_siblings siblings)
   end
 end
 
+require 'app/routes'
 require 'app/models'
 include Transitmix::Models

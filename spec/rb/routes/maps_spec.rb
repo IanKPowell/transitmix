@@ -3,6 +3,23 @@ require './spec/rb/spec_helper.rb'
 describe Transitmix::Routes::Maps do
   include Transitmix::Routes::TestHelpers
 
+  describe 'GET /api/maps/:id/:tree_view' do
+    it 'returns the corresponding tree view' do
+      map = create(:map)
+      remix_1 = map.remix
+      remix_2 = map.remix
+
+      get "/api/maps/#{map.id}/children"
+      expect(last_response.body).to eq [remix_1, remix_2].to_json
+
+      get "/api/maps/#{remix_1.id}/siblings"
+      expect(last_response.body).to eq [remix_2].to_json
+
+      get "/api/maps/#{remix_1.id}/parent"
+      expect(last_response.body).to eq map.to_json
+    end
+  end
+
   describe 'POST /api/maps/:id/remix' do
     let!(:map) { create(:map) }
     let!(:lines) { create_list(:line, 3, map_id: map.id) }

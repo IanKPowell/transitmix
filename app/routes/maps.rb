@@ -9,6 +9,24 @@ module Transitmix
       end
 
       params do
+        optional :page, type: Integer, default: 1
+        optional :per, type: Integer, default: 10, max: 100
+      end
+
+      get '/api/maps/roots' do
+        Map.roots_dataset.paginate(params[:page], params[:per]).order(Sequel.desc(:created_at))
+      end
+
+      params do
+        requires :id, type: Integer
+        requires :tree_view, type: String, values: Transitmix::App.tree_views
+      end
+
+      get '/api/maps/:id/:tree_view' do
+        Map.first!(id: params[:id]).tree_view(params[:tree_view])
+      end
+
+      params do
         requires :id, type: Integer
       end
 

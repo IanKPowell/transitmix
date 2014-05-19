@@ -79,7 +79,9 @@ CREATE TABLE maps (
     zoom_level integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    remixed_from_id integer
+    remixed_from_id integer,
+    remix_count integer DEFAULT 0,
+    nth_remix integer
 );
 
 
