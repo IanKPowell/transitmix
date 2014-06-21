@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/invisiblefunnel/moneta.git
+  revision: d3e2a0fe786df7d4391e06c16debe2fe488695f6
+  branch: sequel-postgres
+  specs:
+    moneta (0.7.20)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -7,6 +14,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     airbrake (3.1.14)
       builder
       json
@@ -18,6 +26,8 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     columnize (0.8.9)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     database_cleaner (1.2.0)
     dbf (2.0.7)
       fastercsv (~> 1.5.4)
@@ -40,6 +50,7 @@ GEM
       activesupport (>= 3.0.0)
     fastercsv (1.5.5)
     ffaker (1.24.0)
+    geocoder (1.2.2)
     georuby (2.2.1)
     grape (0.7.0)
       activesupport
@@ -95,6 +106,7 @@ GEM
       builder
       nokogiri
     rubyzip (1.1.4)
+    safe_yaml (1.0.3)
     sass (3.3.7)
     sequel (4.10.0)
     sinatra (1.4.5)
@@ -122,6 +134,9 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0.3)
       equalizer (~> 0.0.9)
+    webmock (1.17.4)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -135,9 +150,11 @@ DEPENDENCIES
   dotenv
   factory_girl
   ffaker
+  geocoder (~> 1.2)
   georuby
   grape (~> 0.7)
   jasmine
+  moneta (~> 0.7)!
   newrelic_rpm
   pg (~> 0.17)
   rack-test
@@ -151,3 +168,4 @@ DEPENDENCIES
   sinatra-assetpack (~> 0.3)
   uglifier (~> 2.5)
   unicorn
+  webmock

@@ -3,6 +3,7 @@ require 'factory_girl'
 require 'ffaker'
 require 'rspec'
 require 'rack/test'
+require 'webmock/rspec'
 
 require './app'
 require './spec/rb/factories'

@@ -14,8 +14,6 @@ require 'sinatra/assetpack'
 require 'sinatra-sequel'
 require 'grape'
 
-require 'app/routes'
-
 module Transitmix
   class App < Sinatra::Application
     set :root, File.expand_path('../', __FILE__)
@@ -28,4 +26,5 @@ module Transitmix
 end
 
 require 'app/models'
+require 'app/routes'
 include Transitmix::Models

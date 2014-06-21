@@ -6,8 +6,10 @@ gem 'airbrake', require: false
 gem 'dbf'
 gem 'dedent'
 gem 'dotenv'
+gem 'geocoder', '~> 1.2'
 gem 'georuby'
 gem 'grape', '~> 0.7'
+gem 'moneta', '~> 0.7', github: 'invisiblefunnel/moneta', branch: 'sequel-postgres'
 gem 'newrelic_rpm'
 gem 'pg', '~> 0.17'
 gem 'rake'
@@ -28,4 +30,5 @@ group :test do
   gem 'rack-test'
   gem 'rspec', '~> 2.14'
   gem 'jasmine'
+  gem 'webmock'
 end

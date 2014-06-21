@@ -102,6 +102,16 @@ ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
 
 
 --
+-- Name: moneta; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE moneta (
+    k text NOT NULL,
+    v bytea
+);
+
+
+--
 -- Name: schema_info; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -138,6 +148,14 @@ ALTER TABLE ONLY lines
 
 ALTER TABLE ONLY maps
     ADD CONSTRAINT maps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: moneta_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY moneta
+    ADD CONSTRAINT moneta_pkey PRIMARY KEY (k);
 
 
 --
