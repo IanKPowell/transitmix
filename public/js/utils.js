@@ -58,23 +58,23 @@ app.utils.decodeGeometry = function(encoded, precision) {
 // Geocode a city into a latlng and a more formalized city name 
 // using the  Google Maps geocoding API.
 app.utils.geocode = function(city, callback, context) {
-  var geocoder = L.mapbox.geocoder('codeforamerica.h6mlbj75');
-  geocoder.query(city, function(err, response) {
+  var url = '/api/geocode/' + encodeURI(city);
 
-    if (err || response.results.length === 0) {
-      // TODO: add displayed error message
-      console.log('Unable to geocode city. Womp Womp.', err);
+  $.getJSON(url, function(response) {
+    if (response.error || response.length === 0) {
+      console.log('Unable to geocode city. Womp Womp.', response.error);
     }
 
     // Get the coordinates for the center of the city
-    var latlng = response.latlng;
+    var location = response[0].data.geometry.location;
+    var latlng = [location.lat, location.lng];
 
-    // Get the city's name. In Mapbox this is called 'city'
+    // Get the city's name. In google maps this is called 'locality'
     var name = city;
-    var components = response.results[0];
+    var components = response[0].data.address_components;
     for (var i = 0; i < components.length; i++) {
-      if (components[i].type === 'city') {
-        name = components[i].name;
+      if (_.contains(components[i].types, 'locality')) {
+        name = components[i].long_name;
         break;
       }
     }
