@@ -1,7 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
-require 'active_support/cache/moneta_store'
-require 'app/models/simple_store'
+require 'app/services/simple_store'
 
 module Transitmix
   module Services
@@ -18,9 +17,7 @@ module Transitmix
           conn.params['sensor'] = false
 
           conn.response :json
-          conn.response :caching do
-            ActiveSupport::Cache::MonetaStore.new(store: Transitmix::Models::SimpleStore)
-          end
+          conn.response :caching, Transitmix::Services::SimpleStore
 
           conn.adapter Faraday.default_adapter
         end
