@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/invisiblefunnel/faraday_middleware.git
+  revision: 537cbdb119fcf3d27a45d1a99dda6c82a3683d75
+  branch: not_cache_invalid_response
+  specs:
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.10)
+
+GIT
   remote: git://github.com/invisiblefunnel/moneta.git
   revision: d3e2a0fe786df7d4391e06c16debe2fe488695f6
   branch: sequel-postgres
@@ -50,8 +58,6 @@ GEM
       activesupport (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.9.1)
-      faraday (>= 0.7.4, < 0.10)
     fastercsv (1.5.5)
     ffaker (1.24.0)
     georuby (2.2.1)
@@ -154,7 +160,7 @@ DEPENDENCIES
   dotenv
   factory_girl
   faraday (~> 0.9)
-  faraday_middleware (~> 0.9)
+  faraday_middleware (~> 0.9)!
   ffaker
   georuby
   grape (~> 0.7)
