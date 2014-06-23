@@ -66,12 +66,12 @@ app.utils.geocode = function(city, callback, context) {
     }
 
     // Get the coordinates for the center of the city
-    var location = response[0].data.geometry.location;
+    var location = response.results[0].geometry.location;
     var latlng = [location.lat, location.lng];
 
     // Get the city's name. In google maps this is called 'locality'
     var name = city;
-    var components = response[0].data.address_components;
+    var components = response.results[0].address_components;
     for (var i = 0; i < components.length; i++) {
       if (_.contains(components[i].types, 'locality')) {
         name = components[i].long_name;
