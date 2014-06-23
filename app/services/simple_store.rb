@@ -1,4 +1,5 @@
 require 'moneta'
+require 'active_support/per_thread_registry'
 require 'active_support/cache/moneta_store'
 
 module Transitmix
