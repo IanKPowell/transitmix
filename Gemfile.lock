@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/invisiblefunnel/faraday_middleware.git
+  remote: git://github.com/transitmix/faraday_middleware.git
   revision: 537cbdb119fcf3d27a45d1a99dda6c82a3683d75
   branch: not_cache_invalid_response
   specs:
@@ -7,7 +7,7 @@ GIT
       faraday (>= 0.7.4, < 0.10)
 
 GIT
-  remote: git://github.com/invisiblefunnel/moneta.git
+  remote: git://github.com/transitmix/moneta.git
   revision: d3e2a0fe786df7d4391e06c16debe2fe488695f6
   branch: sequel-postgres
   specs:
