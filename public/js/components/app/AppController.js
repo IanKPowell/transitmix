@@ -41,8 +41,9 @@ app.AppController = app.Controller.extend({
 
   showHome: function() {
     this._closeControllers();
-    this.homeController = new app.HomeController({ router: this });
+    // this.homeController = new app.HomeController({ router: this });
     this.router.navigate('/');
+    app.events.trigger('app:createMap');
   },
 
   remixMap: function(mapId) {
@@ -60,15 +61,14 @@ app.AppController = app.Controller.extend({
   },
 
   createMap: function(city) {
+
     var afterCreate = function(map) {
       this._closeControllers();
       this.mapController = new app.MapController({ map: map, router: this.router });
     };
 
-    app.utils.geocode(city, function(latlng, name) {
-      var map = new app.Map({ name: name, center: latlng });
-      map.save({}, { success:  _.bind(afterCreate, this)});
-    }, this);
+    var map = new app.Map({ name: name, center: [37.7749295, -122.419415], name: 'San Francisco' });
+    map.save({}, { success:  _.bind(afterCreate, this)});
   },
 
   // When switching between controllers, close the other ones
