@@ -25,7 +25,7 @@
   }
 
   .scrollable {
-    max-height: 460px;
+    max-height: 550px;
     overflow: auto;
   }
 
@@ -53,8 +53,12 @@
   }
 
   .actions {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    margin-left: -150px;
+    width: 300px;
     background: $primary-color;
-    position: relative;
     padding: 16px 14px;
 
     .left {

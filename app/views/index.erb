@@ -25,7 +25,6 @@
 </head>
 <body>
   <div id="map">
-    <a href="http://mapbox.com/about/maps" class="mapbox-maplogo" target="_blank">MapBox</a>
   </div>
 
   <!-- underscore templates -->
@@ -43,11 +42,13 @@
 
   <script type="text/template" id="tmpl-home-view">
     <div class="homeViewWrapper">
-      <div class="homeTitle">Help design SFMTA's Future!</div>
-      <div class="homeDescription">Design, remix, and share your perfect transit map.<br />Choose a city:</div>
-      <div class="homeCityWrapper">
-        <span class="homeCity" contenteditable="true">San Francisco, CA</span>
-        <span class="homeStartButton">Start</span>
+      <div class="homeTitle">Remix SF MUNI</div>
+      <div class="homeDescription">San Francisco wants your ideas about where to build MUNI lines in the future.</div>
+      <div class="homeDescription">Use this tool to add new lines, add comments, and submit them to the city. Powered by <a href="http://twitter.com/transitmixapp" target="_blank">Transitmix</a>.</div>
+
+
+
+      <span class="homeStartButton">Start</span>        
       </div>
     </div>
   </script>
@@ -97,7 +98,11 @@
   <script type="text/template" id="tmpl-MapDetailsItemView">
     <div class="mapDetailsItemView" style="background:{{ color }}">
       <div class="name">{{ name }}</div>
-      <div class="stats">{{ distance }} miles • {{ total.buses }} buses • {{ totalCost }}</div>
+      {# if (false && description) { #}
+        <div class="stats">description goes here</div>
+      {# } #}
+      
+      <!--<div class="stats">{{ distance }} miles • {{ total.buses }} buses • {{ totalCost }}</div>-->
     </div>
   </script>
 
@@ -114,6 +119,11 @@
       <div class="name" contenteditable="true"><!-- dynamically inserted --></div>
     </header>
 
+    <div class="lineComments" style="background: {{ color2 }};">
+      <h3>Why do you want this line?</h3>
+      <div class="commentArea"></div>
+    </div>
+    <!--
     <div class="serviceWindows" style="background: {{ color2 }};">
       <div class="columns">
         <span class="windowName"></span>
@@ -123,7 +133,6 @@
       </div>
 
       <div class="windows">
-        <!-- dynamically inserted -->
       </div>
     </div>
 
@@ -153,6 +162,7 @@
       <p><a target="_blank" href="http://www.humantransit.org/02box.html">Read more</a> on transit costs.</p>
 
     </div>
+    -->
   </script>
 
   <script type="text/template" id="tmpl-ServiceWindowView">
