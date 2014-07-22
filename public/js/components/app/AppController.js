@@ -50,9 +50,10 @@ app.AppController = app.Controller.extend({
       boxZoom: false,
     };
     app.leaflet = L.mapbox.map('map', 'codeforamerica.h6mlbj75', options);
+    app.leaflet.setView([37.7749295, -122.419415], 14);
 
-    this.feedbackView = new app.FeedbackView();
-    $('body').append(this.feedbackView.render().el);
+    // this.feedbackView = new app.FeedbackView();
+    // $('body').append(this.feedbackView.render().el);
   },
 
   showMap: function(mapId, lineId) {
@@ -74,9 +75,9 @@ app.AppController = app.Controller.extend({
 
   showHome: function() {
     this._closeControllers();
-    // this.homeController = new app.HomeController({ router: this });
+    this.homeController = new app.HomeController({ router: this });
     this.router.navigate('/');
-    app.events.trigger('app:createMap');
+    // app.events.trigger('app:createMap');
   },
 
   remixMap: function(mapId) {
@@ -96,12 +97,12 @@ app.AppController = app.Controller.extend({
   createMap: function(city) {
 
     var afterCreate = function(map) {
-      map.get('lines').create(app.SFMTA_DEFAULT_LINES[0]);
-      map.get('lines').create(app.SFMTA_DEFAULT_LINES[1]);
-      map.get('lines').create(app.SFMTA_DEFAULT_LINES[2]);
-      map.get('lines').create(app.SFMTA_DEFAULT_LINES[3]);
-      map.get('lines').create(app.SFMTA_DEFAULT_LINES[4]);
-      map.get('lines').create(app.SFMTA_DEFAULT_LINES[5]);
+      map.get('lines').create(_.extend(app.SFMTA_DEFAULT_LINES[0], { mapId: map.id }));
+      map.get('lines').create(_.extend(app.SFMTA_DEFAULT_LINES[1], { mapId: map.id }));
+      map.get('lines').create(_.extend(app.SFMTA_DEFAULT_LINES[2], { mapId: map.id }));
+      map.get('lines').create(_.extend(app.SFMTA_DEFAULT_LINES[3], { mapId: map.id }));
+      map.get('lines').create(_.extend(app.SFMTA_DEFAULT_LINES[4], { mapId: map.id }));
+      map.get('lines').create(_.extend(app.SFMTA_DEFAULT_LINES[5], { mapId: map.id }));
 
       this._closeControllers();
       this.mapController = new app.MapController({ map: map, router: this.router });

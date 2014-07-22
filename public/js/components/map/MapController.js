@@ -29,8 +29,8 @@ app.MapController = app.Controller.extend({
     this.linesView.render();
 
     // Tiny view for the 'New Map' button in the bottom left
-    this.mapExtrasView = new app.MapExtrasView({ model: this.map });
-    $('body').append(this.mapExtrasView.render().el);
+    // this.mapExtrasView = new app.MapExtrasView({ model: this.map });
+    // $('body').append(this.mapExtrasView.render().el);
 
     this.selectLine(lineId);
   },

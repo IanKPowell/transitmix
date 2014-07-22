@@ -43,7 +43,7 @@
 
   <script type="text/template" id="tmpl-home-view">
     <div class="homeViewWrapper">
-      <div class="homeTitle">Transitmix</div>
+      <div class="homeTitle">Help design SFMTA's Future!</div>
       <div class="homeDescription">Design, remix, and share your perfect transit map.<br />Choose a city:</div>
       <div class="homeCityWrapper">
         <span class="homeCity" contenteditable="true">San Francisco, CA</span>
@@ -55,10 +55,12 @@
   <script type="text/template" id="tmpl-MapDetailsView">
     <header>
       <h1>{{ name }}</h1>
+      <!--
       {# if (remixedFromId) { #}
         <div class="source">Remixed from <span class="remixedFrom">#{{ remixedFromId }}</span></div>
       {# } #}
       <div class="stats">This map: {{ lineCount }} lines, {{ distance }} miles, {{ cost }} per year, {{ buses }} buses at peak</div>
+      -->
     </header>
 
     <div class="scrollable">
