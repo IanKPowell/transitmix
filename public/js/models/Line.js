@@ -6,7 +6,7 @@ app.Line = Backbone.Model.extend({
 
   defaults: function() {
     var color = app.utils.getNextColor();
-    var name = _.random(10, 99) + ' ' + app.utils.getRandomName();
+    var name = _.sample(10, 99) + ' Name Me';
 
     var serviceWindows = new app.ServiceWindows([
       { name: 'AM Peak', from: '7am', to: '10am', headway: 12 },
