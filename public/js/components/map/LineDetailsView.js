@@ -10,6 +10,7 @@ app.LineDetailsView = app.BaseView.extend({
       onGet: function(val) { return val.toFixed(1) + ' mph'; },
       onSet: function(val) { return parseFloat(val); },
     },
+    '.commentArea': 'comment',
   },
 
   events: {

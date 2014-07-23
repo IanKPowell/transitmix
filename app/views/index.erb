@@ -98,8 +98,8 @@
   <script type="text/template" id="tmpl-MapDetailsItemView">
     <div class="mapDetailsItemView" style="background:{{ color }}">
       <div class="name">{{ name }}</div>
-      {# if (false && description) { #}
-        <div class="stats">description goes here</div>
+      {# if (comment) { #}
+        <div class="stats">{{ comment }}</div>
       {# } #}
       
       <!--<div class="stats">{{ distance }} miles • {{ total.buses }} buses • {{ totalCost }}</div>-->
@@ -121,7 +121,7 @@
 
     <div class="lineComments" style="background: {{ color2 }};">
       <h3>Why do you want this line?</h3>
-      <div class="commentArea"></div>
+      <textarea name="textarea" class="commentArea" placeholder="Click to type."></textarea>
     </div>
     <!--
     <div class="serviceWindows" style="background: {{ color2 }};">

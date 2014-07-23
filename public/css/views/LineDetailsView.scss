@@ -4,6 +4,22 @@
   right: 15px;
   width: 280px;
 
+  ::-webkit-input-placeholder {
+     color: rgba(255, 255, 255, 0.51);
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+     color: rgba(255, 255, 255, 0.51);  
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+     color: rgba(255, 255, 255, 0.51);  
+  }
+
+  :-ms-input-placeholder {  
+     color: rgba(255, 255, 255, 0.51);  
+  }
+
   input {
     background: transparent;
     color: white;
@@ -18,6 +34,12 @@
 
   .commentArea {
     height: 200px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    border: 1px dotted rgba(255, 255, 255, 0.51);
+    margin-top: 10px;
+    padding: 10px;
+    outline: 0;
   }
 
   input:hover {

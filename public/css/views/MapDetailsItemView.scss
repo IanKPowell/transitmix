@@ -22,5 +22,8 @@
     line-height: 16px;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

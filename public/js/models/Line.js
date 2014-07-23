@@ -23,6 +23,7 @@ app.Line = Backbone.Model.extend({
       name: name,
       serviceWindows: serviceWindows,
       speed: 10.0,
+      comment: undefined,
     };
   },
 
@@ -48,6 +49,7 @@ app.Line = Backbone.Model.extend({
       name: response.name,
       serviceWindows: serviceWindows,
       speed: response.speed,
+      comment: response.comment,
     };
 
     return app.utils.removeUndefined(attrs);
@@ -65,6 +67,7 @@ app.Line = Backbone.Model.extend({
       name: attrs.name,
       service_windows: serviceWindows,
       speed: attrs.speed,
+      comment: attrs.comment,
     };
   },
 

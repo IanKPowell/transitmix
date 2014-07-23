@@ -34,6 +34,7 @@ app.Map = Backbone.Model.extend({
       name: response.name,
       remixedFromId: response.remixed_from_id,
       zoomLevel: response.zoom_level,
+      comments: response.comments,
     };
 
     return app.utils.removeUndefined(attrs);
@@ -50,6 +51,7 @@ app.Map = Backbone.Model.extend({
       name: attrs.name,
       remixed_from_id: attrs.remixedFromId,
       zoom_level: attrs.zoomLevel,
+      comments: attrs.comments,
     };
   },
 });
