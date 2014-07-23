@@ -4,8 +4,9 @@ module Transitmix
       plugin :timestamps, update_on_create: true
       plugin :json_serializer, :include=>:lines
       plugin :serialization, :json, :center
+      plugin :serialization, :json, :comments
 
-      set_allowed_columns :name, :center, :zoom_level, :layover, :hourly_cost
+      set_allowed_columns :name, :center, :zoom_level, :layover, :hourly_cost, :comments
 
       one_to_many :lines
 
