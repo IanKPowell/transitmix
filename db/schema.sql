@@ -42,7 +42,8 @@ CREATE TABLE lines (
     coordinates text,
     map_id integer,
     id integer NOT NULL,
-    service_windows text
+    service_windows text,
+    comment text
 );
 
 
@@ -78,7 +79,8 @@ CREATE TABLE maps (
     updated_at timestamp without time zone,
     remixed_from_id integer,
     layover double precision,
-    hourly_cost integer
+    hourly_cost integer,
+    comments text
 );
 
 
