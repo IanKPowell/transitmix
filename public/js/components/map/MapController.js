@@ -28,6 +28,11 @@ app.MapController = app.Controller.extend({
     });
     this.linesView.render();
 
+    this.commentsView = new app.LeafletCommentsView({
+      collection: this.map.get('comments'),
+    });
+    this.commentsView.render();
+
     // Tiny view for the 'New Map' button in the bottom left
     // this.mapExtrasView = new app.MapExtrasView({ model: this.map });
     // $('body').append(this.mapExtrasView.render().el);
@@ -140,6 +145,7 @@ app.MapController = app.Controller.extend({
   teardownViews: function() {
     this._teardownSelectionViews();
     this.linesView.remove();
+    this.commentsView.remove();
     if (this.nearbyView) this.nearbyView.remove();
     this.mapExtrasView.remove();
   },

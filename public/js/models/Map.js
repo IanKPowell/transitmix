@@ -1,14 +1,17 @@
 app.Map = Backbone.Model.extend({
   urlRoot: '/api/maps',
 
-  defaults: {
-    center: [],
-    hourlyCost: 120,
-    layover: 0.10,
-    lines: undefined,
-    name: '',
-    remixedFromId: undefined,
-    zoomLevel: 14,
+  defaults: function() {
+    return {
+      center: [],
+      hourlyCost: 120,
+      layover: 0.10,
+      lines: undefined,
+      name: '',
+      remixedFromId: undefined,
+      zoomLevel: 14,
+      comments: new app.Comments(),
+    };
   },
 
   initialize: function() {
@@ -25,6 +28,11 @@ app.Map = Backbone.Model.extend({
       lines.map = this;
     }
 
+    var comments = this.get('comments');
+    if (!comments && response.comments) {
+      comments = new app.Comments(response.comments, { parse: true });
+    }
+
     var attrs = {
       id: response.id,
       center: response.center,
@@ -34,7 +42,7 @@ app.Map = Backbone.Model.extend({
       name: response.name,
       remixedFromId: response.remixed_from_id,
       zoomLevel: response.zoom_level,
-      comments: response.comments,
+      comments: comments,
     };
 
     return app.utils.removeUndefined(attrs);
@@ -51,7 +59,7 @@ app.Map = Backbone.Model.extend({
       name: attrs.name,
       remixed_from_id: attrs.remixedFromId,
       zoom_level: attrs.zoomLevel,
-      comments: attrs.comments,
+      comments: attrs.comments.toJSON(),
     };
   },
 });
