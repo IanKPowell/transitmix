@@ -1,19 +1,15 @@
 app.LeafletCommentsView = Backbone.View.extend({
   initialize: function() {
-
-    // when there is an add event, add the marker
     this.listenTo(this.collection, 'add', this.addOne);
   },
 
   render: function() {
-
-    // for each comment, add a marker
-    this.collection.forEach(this.addOne);
+    this.collection.forEach(function(item) { this.addOne(item, false); }, this);
     return this;
   },
 
-  addOne: function(comment) {
-    var html = '<div class="commentMarker"><textarea>' + (comment.get('commentBody') || '') + '</textarea></div>';
+  addOne: function(comment, startExanded) {
+    var html = '<div class="commentMarker"><div class="dotdotdot">...</div><textarea placeholder="Type your comment">' + (comment.get('commentBody') || '') + '</textarea></div>';
     var icon = L.divIcon({ className: 'ignoreLeaflet',  html: html });
     var latlng = comment.get('latlng');
 
@@ -30,9 +26,18 @@ app.LeafletCommentsView = Backbone.View.extend({
       textarea.focus();
     });
 
-    marker.on('click', function(event) {
-      $(event.originalEvent.target).addClass('expanded');
+    textarea.on('mouseout', function(event) {
+      $(marker._icon).removeClass('expanded');
     });
+
+    marker.on('click', function(event) {
+      $(marker._icon).addClass('expanded');
+    });
+
+    if (startExanded) {
+      $(marker._icon).addClass('expanded');
+      textarea.focus();
+    }
   },
 
   remove: function() {

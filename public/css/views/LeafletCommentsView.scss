@@ -1,28 +1,69 @@
 .commentMarker {
-  background: red;
-  width: 100px;
-  height: 40px;
   position: relative;
-  left: -50px;
-  top: -20px;
-
+  left: -32px;
+  top: -34px;
   font-size: 15px;
-  padding: 5px 10px;
-  height: 29px;
-  overflow: hidden;
-  width: 169px;
+  padding: 0px 5px;
+  height: 34px;
+  width: 64px;
   border-radius: 2px;
-  background: #1F143A;
-  color: rgba(255, 255, 255, 0.74);
+  background: #6B6D7E;
+  color: #FFF;
+  border: 5px solid #6B6D7E;
+}
+
+.commentMarker textarea {
+  display: none;
+}
+
+.expanded {
+  z-index: 999999;
+}
+
+.expanded .commentMarker {
+  width: 250px;
+  height: 100px;
+  top: -100px;
+
+}
+
+.expanded .commentMarker textarea {
+  display: block;
+  background: rgba(0, 0, 0, 0);
+  width: 235px;
+  border: none;
+  height: 93px;
+  outline: 0;
+  resize: none;
+}
+
+.expanded .dotdotdot {
+  display: none;
+}
+
+textarea:focus {
+  outline: 0;
+}
+
+.commentMarker:after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  left: 14px;
+  border-width: 13px 13px 0;
+  border-style: solid;
+  border-color: #6B6D7E rgba(0, 0, 0, 0);
+  display: block;
+  width: 0;
 }
 
 .commentMarker.expanded {
   background: green;
 }
 
-.commentMarker textarea {
-  background: rgba(0, 0, 0, 0);
-  width: 100%;
-  border: none;
-  border: #FFDEAD;
+.dotdotdot {
+  font-size: 50px;
+  font-family: comic sans;
+  position: relative;
+  top: -12px;
 }
