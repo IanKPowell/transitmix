@@ -5,8 +5,24 @@
   position: relative;
   left: -50px;
   top: -20px;
+
+  font-size: 15px;
+  padding: 5px 10px;
+  height: 29px;
+  overflow: hidden;
+  width: 169px;
+  border-radius: 2px;
+  background: #1F143A;
+  color: rgba(255, 255, 255, 0.74);
 }
 
 .commentMarker.expanded {
   background: green;
+}
+
+.commentMarker textarea {
+  background: rgba(0, 0, 0, 0);
+  width: 100%;
+  border: none;
+  border: #FFDEAD;
 }
