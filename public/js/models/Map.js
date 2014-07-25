@@ -18,6 +18,7 @@ app.Map = Backbone.Model.extend({
     // Automatically save after changes, at most once per second
     var debouncedSaved = _.debounce(function() { this.save(); }, 1000);
     this.on('change', debouncedSaved, this);
+    this.get('comments').on('change add', debouncedSaved, this);
   },
 
   parse: function(response) {
