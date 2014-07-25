@@ -50,6 +50,10 @@ app.MapController = app.Controller.extend({
       return;
     }
 
+    if (this.mapDetailsView && this.mapDetailsView.isCommenting) {
+      return;
+    }
+
     this._teardownSelectionViews();
 
     var selectedLine = this.map.get('lines').get(lineId);

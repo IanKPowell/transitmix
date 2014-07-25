@@ -13,8 +13,26 @@ app.LeafletCommentsView = Backbone.View.extend({
   },
 
   addOne: function(comment) {
+    var html = '<div class="commentMarker"><textarea>' + (comment.get('commentBody') || '') + '</textarea></div>';
+    var icon = L.divIcon({ className: 'ignoreLeaflet',  html: html });
     var latlng = comment.get('latlng');
-    L.marker(latlng).addTo(app.leaflet);
+
+    var marker = L.marker(latlng, {
+      icon: icon,
+    }).addTo(app.leaflet);
+
+    var textarea = $(marker._icon).find('textarea');
+    textarea.on('input', function() {
+      comment.set('commentBody', textarea.val());
+    });
+
+    $(marker._icon).on('click', function() {
+      textarea.focus();
+    });
+
+    marker.on('click', function(event) {
+      $(event.originalEvent.target).addClass('expanded');
+    });
   },
 
   remove: function() {

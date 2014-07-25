@@ -14,29 +14,24 @@ app.MapDetailsView = app.BaseView.extend({
     'click .addComment': 'startAddingComment', 
   },
 
+  isCommenting: false,
 
   startAddingComment: function() {
-    // hide the bar
-    // add a notification bar
-    // add something underneath the cursor, that moves as you move the cursor
-    // add a click even that drops a comment... and opens it
-    // then reverts everything back to it's usual state
+    this.isCommenting = true;
+
     var comments = this.model.get('comments');
     var finish = _.bind(this.stopAddingComment, this);
     this.$('.actions').hide();
 
     $('body').append('<div class="commentNotification NotificationView">Click anywhere to add a comment</div>');
     app.leaflet.once('click', function(event) {
-      // event.latlng;
-
-      //create a new comment object
       comments.add({ latlng: event.latlng });
       finish();
-
     });
   },
 
   stopAddingComment: function() {
+    this.isCommenting = false;
     this.$('.actions').show();
     $('.commentNotification').remove();
   },

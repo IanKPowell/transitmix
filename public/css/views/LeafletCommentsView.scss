@@ -1,0 +1,12 @@
+.commentMarker {
+  background: red;
+  width: 100px;
+  height: 40px;
+  position: relative;
+  left: -50px;
+  top: -20px;
+}
+
+.commentMarker.expanded {
+  background: green;
+}
