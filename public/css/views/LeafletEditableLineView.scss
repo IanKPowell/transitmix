@@ -63,3 +63,24 @@
     opacity: 0.5;
   }
 }
+
+.lineButtons {
+  width: 210px;
+  height: 100px;
+  position: relative;
+  left: 24px;
+  top: -6px;
+
+  div {
+    height: 70px;
+    width: 70px;
+    float: left;
+    background-color: #333;
+    color: white;
+    border-left: 1px solid #ccc;
+
+    &:first {
+      border-left: 0px;
+    }
+  }
+}

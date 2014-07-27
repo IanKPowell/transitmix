@@ -1,4 +1,4 @@
-app.LeafletLineView = Backbone.View.extend({
+app.LeafletPatternView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change:coordinates', this.render);
 

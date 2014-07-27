@@ -25,7 +25,7 @@ app.MapController = app.Controller.extend({
 
     this.linesView = new app.CollectionView({
       collection: this.map.get('lines'),
-      view: app.LeafletLineView,
+      view: app.LineView,
     });
     this.linesView.render();
 
@@ -33,7 +33,7 @@ app.MapController = app.Controller.extend({
     this.mapExtrasView = new app.MapExtrasView({ model: this.map });
     $('body').append(this.mapExtrasView.render().el);
 
-    this.selectLine(lineId);
+    app.events.trigger('map:selectLine', lineId);
   },
 
   selectLine: function(lineId) {
@@ -51,9 +51,6 @@ app.MapController = app.Controller.extend({
     this._teardownSelectionViews();
 
     var selectedLine = this.map.get('lines').get(lineId);
-    this.editableLine = new app.LeafletEditableLineView({ model: selectedLine });
-    this.editableLine.render();
-
     this.lineDetailsView = new app.LineDetailsView({ model: selectedLine });
     $('body').append(this.lineDetailsView.render().el);
 

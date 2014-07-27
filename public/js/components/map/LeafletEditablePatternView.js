@@ -1,4 +1,4 @@
-app.LeafletEditableLineView = Backbone.View.extend({
+app.LeafletEditablePatternView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change:coordinates', this.updateCoordinates);
 
@@ -132,6 +132,18 @@ app.LeafletEditableLineView = Backbone.View.extend({
       $('.drawingInstructions').remove();
     });
 
+    // Using a marker for the popup that finishes drawing so it tracks with map panning
+    var finishMarkerIcon = L.divIcon({
+        className: "finishMarker",
+        html: '<div class="lineButtons">' +
+          '<div class="oneWay">Keep as 1-way</div>' +
+          '<div class="drawOther">Draw other direction</div>' +
+          '<div class="autoDrawOther">Auto-draw other directions</div></div>'});
+
+    this.finishMarker = L.marker(L.latLng(0, 0), {icon: finishMarkerIcon});
+    this.finishMarker.addTo(app.leaflet);
+    this.finishMarker.on('click', this.stopDrawing);
+
     app.leaflet.on('click', this.draw);
     app.leaflet.on('mousemove', this.throttledShowDrawingLine);
 
@@ -147,20 +159,27 @@ app.LeafletEditableLineView = Backbone.View.extend({
   draw: function(event) {
     this.model.addWaypoint(event.latlng, this.ignoreRoads);
 
+    /*
     // Show the click-to-finish tooltip only on the last drawn marker,
     // and only if we've drawn at least two points.
     var prev = _.last(this.markers);
     if (prev) L.DomUtil.removeClass(prev._icon, 'showDrawingTooltip');
-
+    */
     var color = app.utils.tweakColor(this.model.get('color'), -30);
     var html = '<div class="mapMarker" style="border-color:' + color + '"></div>';
     var classNames = 'mapMarkerWrapper';
+    /*
     if (this.markers.length > 0) classNames += ' showDrawingTooltip';
+    */
     var icon = L.divIcon({ className: classNames,  html: html });
     var marker = L.marker(event.latlng, { icon: icon }).addTo(app.leaflet);
 
+    this.finishMarker.setLatLng(event.latlng);
+    this.finishMarker.on('click', this.stopDrawing);
     // Click any marker, but preferably the last one, to finish drawing.
+    /*
     marker.on('click', this.stopDrawing);
+    */
     this.markers.push(marker);
   },
 
@@ -188,6 +207,8 @@ app.LeafletEditableLineView = Backbone.View.extend({
     $('.drawingInstructions').remove();
     app.leaflet.off('click', this.draw);
     app.leaflet.off('mousemove', this.throttledShowDrawingLine);
+
+    if (this.finishMarker) app.leaflet.removeLayer(this.finishMarker);
     if (this.drawingLine) app.leaflet.removeLayer(this.drawingLine);
   },
 
