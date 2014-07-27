@@ -15,7 +15,7 @@ app.Line = Backbone.Model.extend({
       name: name,
       serviceWindows: new app.ServiceWindows(),
       patterns: new app.Patterns([
-        {name: "Inbound", coordinates: []}
+        {name: "Inbound", coordinates: [], color: color}
         ])
     };
   },

@@ -3,11 +3,35 @@
 // of waypoints to navigate through, and it'll handle the rest.
 // A pattern represents a one-way direction of travel.
 app.Pattern = Backbone.Model.extend({
+  urlRoot: '/api/patterns',
   defaults: function() {
     return {
       name: "Inbound",
       lineId: undefined,
-      coordinates: []
+      coordinates: [],
+      color: undefined
+    }
+  },
+
+  parse: function(response) {
+    var attrs = {
+      name: response.name,
+      coordinates: response.coordinates,
+      lineId: response.line_id,
+      color: response.color
+    }
+
+    return app.utils.removeUndefined(attrs);
+  },
+
+  toJSON: function() {
+    var attrs = this.attributes;
+    return {
+      id: attrs.id,
+      name: attrs.name,
+      line_id: attrs.lineId,
+      coordinates: attrs.coordinates,
+      color: attrs.color
     }
   },
 
