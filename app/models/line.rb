@@ -2,13 +2,15 @@ module Transitmix
   module Models
     class Line < Sequel::Model
       plugin :timestamps, update_on_create: true
-      plugin :json_serializer
+      plugin :json_serializer, :include => :patterns
       plugin :serialization, :json, :coordinates
       plugin :serialization, :json, :service_windows
 
       set_allowed_columns :coordinates, :name, :speed, :color, :map_id, 
                           :service_windows, :weekdays_per_year, :saturdays_per_year,
                           :sundays_per_year, :layover, :hourly_cost
+
+      one_to_many :patterns
 
       # Used in a variety of export formats
       def to_flattened_lnglat

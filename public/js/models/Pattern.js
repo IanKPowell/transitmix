@@ -15,6 +15,7 @@ app.Pattern = Backbone.Model.extend({
 
   parse: function(response) {
     var attrs = {
+      id: response.id,
       name: response.name,
       coordinates: response.coordinates,
       lineId: response.line_id,

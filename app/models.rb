@@ -19,6 +19,7 @@ module Transitmix
   end
 end
 
+require 'app/models/pattern'
 require 'app/models/line'
 require 'app/models/map'
 require 'app/models/app_status'

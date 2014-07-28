@@ -113,6 +113,40 @@ ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
 
 
 --
+-- Name: patterns; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE patterns (
+    id integer NOT NULL,
+    name text,
+    coordinates text,
+    color text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    line_id integer
+);
+
+
+--
+-- Name: patterns_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE patterns_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: patterns_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE patterns_id_seq OWNED BY patterns.id;
+
+
+--
 -- Name: schema_info; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -136,6 +170,13 @@ ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclas
 
 
 --
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY patterns ALTER COLUMN id SET DEFAULT nextval('patterns_id_seq'::regclass);
+
+
+--
 -- Name: lines_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -152,11 +193,27 @@ ALTER TABLE ONLY maps
 
 
 --
+-- Name: patterns_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY patterns
+    ADD CONSTRAINT patterns_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: lines_map_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lines
     ADD CONSTRAINT lines_map_id_fkey FOREIGN KEY (map_id) REFERENCES maps(id);
+
+
+--
+-- Name: patterns_line_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY patterns
+    ADD CONSTRAINT patterns_line_id_fkey FOREIGN KEY (line_id) REFERENCES lines(id);
 
 
 --

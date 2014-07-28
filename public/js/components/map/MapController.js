@@ -73,7 +73,18 @@ app.MapController = app.Controller.extend({
   },
 
   addLine: function() {
-    var afterSave = function(line) { app.events.trigger('map:selectLine', line.id); };
+    var afterSave = function(line) { 
+      if (line.get('patterns').length == 0) {
+        firstPattern = new app.Pattern({
+          name: "Inbound",
+          coordinates: [],
+          color: line.get('color'),
+          lineId: line.get('id')
+        });
+        line.get('patterns').add(firstPattern);
+      }
+      app.events.trigger('map:selectLine', line.id); 
+    };
     var lines = this.map.get('lines');
     lines.create(this.map.getLineDefaults(), { success: afterSave });
   },

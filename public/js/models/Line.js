@@ -14,9 +14,7 @@ app.Line = Backbone.Model.extend({
       mapId: undefined,
       name: name,
       serviceWindows: new app.ServiceWindows(),
-      patterns: new app.Patterns([
-        {name: "Inbound", coordinates: [], color: color}
-        ])
+      patterns: new app.Patterns([])
     };
   },
 
@@ -34,6 +32,11 @@ app.Line = Backbone.Model.extend({
       serviceWindows = new app.ServiceWindows(response.service_windows);
     }
 
+    var patterns = this.get('patterns');
+    if (!patterns && response.patterns) {
+      patterns = new app.Patterns(response.patterns);
+    }
+
     // Import colors from GTFS
     var gtfsColor = response.route_color;
     if (gtfsColor && gtfsColor !== ' ' && gtfsColor !== '000000' && gtfsColor !== 'FFFFFF') {
@@ -47,6 +50,7 @@ app.Line = Backbone.Model.extend({
       mapId: response.map_id,
       name: response.name,
       serviceWindows: serviceWindows,
+      patterns: patterns,
       speed: response.speed,
       layover: response.layover,
       hourlyCost: response.hourly_cost,
@@ -61,6 +65,7 @@ app.Line = Backbone.Model.extend({
   toJSON: function() {
     var attrs = this.attributes;
     var serviceWindows = attrs.serviceWindows.toJSON();
+    var patterns = attrs.patterns.toJSON();
 
     return {
       id: attrs.id,
@@ -69,6 +74,7 @@ app.Line = Backbone.Model.extend({
       map_id: attrs.mapId,
       name: attrs.name,
       service_windows: serviceWindows,
+      patterns: patterns,
       hourly_cost: attrs.hourlyCost,
       speed: attrs.speed,
       layover: attrs.layover,
