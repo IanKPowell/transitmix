@@ -12,6 +12,11 @@ app.MapDetailsView = app.BaseView.extend({
     'click .share': 'showShare',
     'mouseleave': 'hideShare',
     'click .addComment': 'startAddingComment', 
+    'click .submitMap': 'submitMap',
+  },
+
+  submitMap: function() {
+    alert('Submit feature coming soon.');
   },
 
   isCommenting: false,
