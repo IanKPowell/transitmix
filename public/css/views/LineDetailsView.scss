@@ -14,6 +14,10 @@
     cursor: pointer;
   }
 
+  .doneButton:hover {
+    opacity: 1;
+  }
+
   ::-webkit-input-placeholder {
      color: rgba(255, 255, 255, 0.51);
   }
