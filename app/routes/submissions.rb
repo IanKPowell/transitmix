@@ -5,7 +5,7 @@ module Transitmix
     class Submissions < Grape::API
       Pony.options = {
         from: 'transitmix@codeforamerica.org',
-        to: 'sam@samhashemi.com',
+        to: 'RailCapacityStrategy@sfmta.com',
         subject: 'LRV Feedback: A new map has been submitted',
         via: :smtp,
         via_options: {
