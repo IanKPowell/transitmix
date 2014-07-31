@@ -16,7 +16,9 @@ app.MapDetailsView = app.BaseView.extend({
   },
 
   submitMap: function() {
-    alert('Submit feature coming soon.');
+    $.post('/api/maps/' + this.model.id + '/submit');
+    var thankyou = new app.ThankYouView();
+    $(document.body).append(thankyou.render().el);
   },
 
   isCommenting: false,
