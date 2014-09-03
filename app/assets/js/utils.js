@@ -126,7 +126,7 @@ app.utils.geocode = function(city, callback, context) {
 };
 
 app.utils.getNearbyGTFS = function(latlng, callback, context) {  
-  var url = 'http://transitmix-gtfs.herokuapp.com/api/' +
+  var url = 'http://transitmix-wb-china-gtfs.herokuapp.com/api/' +
     'agenciesNearbyWithRoutes/' + latlng[0] + '/' + latlng[1];
   
   $.getJSON(url, function(resp) {
@@ -135,7 +135,7 @@ app.utils.getNearbyGTFS = function(latlng, callback, context) {
 };
 
 app.utils.getNearbyCoordinates = function(agency, lineId, callback, context) {  
-  var url = 'http://transitmix-gtfs.herokuapp.com/api/coordinates/' +  agency + '/' + lineId;
+  var url = 'http://transitmix-wb-china-gtfs.herokuapp.com/api/coordinates/' +  agency + '/' + lineId;
   
   $.getJSON(url, function(resp) {
     callback.call(context || this, resp);
