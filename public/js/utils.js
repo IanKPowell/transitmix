@@ -135,7 +135,7 @@ app.utils.getNearbyGTFS = function(latlng, callback, context) {
 };
 
 app.utils.getNearbyCoordinates = function(agency, lineId, callback, context) {  
-  var url = 'http://transitmix-wb-vietnam-.herokuapp.com/api/coordinates/' +  agency + '/' + lineId;
+  var url = 'http://transitmix-wb-vietnam-gtfs.herokuapp.com/api/coordinates/' +  agency + '/' + lineId;
   
   $.getJSON(url, function(resp) {
     callback.call(context || this, resp);
