@@ -17,6 +17,10 @@ require 'grape'
 require 'app/routes'
 
 module Transitmix
+  Auth = {
+    ENV['BASIC_AUTH_USERNAME'] => ENV['BASIC_AUTH_PASSWORD']
+  }
+
   class App < Sinatra::Application
     set :root, File.expand_path('../', __FILE__)
 
