@@ -17,7 +17,7 @@ app.MapDetailsItemView = app.BaseView.extend({
     calcs.totalCost = app.utils.formatCost(calcs.total.cost);
 
     if (map.get('preferMetricUnits')) {
-      calcs.distance = app.utils.milesToKilometers(calcs.distance).toFixed(2) + ' km';
+      calcs.distance = app.utils.milesToKilometers(calcs.distance).toFixed(2) + ' 公里';
     } else {
       calcs.distance = calcs.distance.toFixed(2) + ' miles';
     }

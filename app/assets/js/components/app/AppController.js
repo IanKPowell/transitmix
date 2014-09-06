@@ -47,7 +47,7 @@ app.AppController = app.Controller.extend({
 
   remixMap: function(mapId) {
     var afterRemix = function(resp) {
-      var message = 'Now editing a freshly-made duplicate of the original map.';
+      var message = '现在编辑已复制的原有地图。';
       app.events.trigger('app:showNotification', message);
 
       var map = new app.Map(resp, { parse: true });

@@ -98,8 +98,8 @@ app.LineDetailsView = app.BaseView.extend({
 
     var distance, halfDistance;
     if (map.get('preferMetricUnits')) {
-      distance = app.utils.milesToKilometers(calcs.distance).toFixed(2) + ' km';
-      halfDistance = app.utils.milesToKilometers(calcs.distance / 2).toFixed(2) + ' km';
+      distance = app.utils.milesToKilometers(calcs.distance).toFixed(2) + ' 公里';
+      halfDistance = app.utils.milesToKilometers(calcs.distance / 2).toFixed(2) + ' 公里';
     } else {
       distance = calcs.distance.toFixed(2) + ' miles';
       halfDistance = (calcs.distance/2).toFixed(2) + ' miles';
@@ -107,7 +107,7 @@ app.LineDetailsView = app.BaseView.extend({
 
     this.$('.distance').html(distance);
     this.$('.halfDistance').html(halfDistance);    
-    this.$('.buses').html(calcs.total.buses + ' buses');
+    this.$('.buses').html('高峰时段有' + calcs.total.buses + '辆巴士');
     this.$('.cost').html(cost);
     this.$('.revenueHours').html(revenueHours);
     this.$('.bigRevenueHours').html(revenueHours + ' hrs');

@@ -1,6 +1,6 @@
 // Additional buttons on the bottom of the UI for new map and nearby lines
 app.MapExtrasView = app.BaseView.extend({
-  template: _.template('<div class="showHome">New Map</div><div class="showNearby">Nearby Lines</div>'),
+  template: _.template('<div class="showHome">新地图</div><div class="showNearby">附近的线路</div>'),
 
   initialize: function() {
     this.listenTo(app.events, 'map:toggleNearby', this.toggleText);
@@ -21,9 +21,9 @@ app.MapExtrasView = app.BaseView.extend({
 
   toggleText: function() {
     if (this.toggled) {
-      this.$('.showNearby').html('Show Nearby').removeClass('showing');
+      this.$('.showNearby').html('附近的线路').removeClass('showing');
     } else {
-      this.$('.showNearby').html('Hide Nearby').addClass('showing');
+      this.$('.showNearby').html('隐藏附近的线路').addClass('showing');
     }
     this.toggled = !this.toggled;
   },

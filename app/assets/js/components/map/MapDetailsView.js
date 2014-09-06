@@ -60,7 +60,7 @@ app.MapDetailsView = app.BaseView.extend({
 
     var distance;
     if (this.model.get('preferMetricUnits')) {
-      distance = app.utils.milesToKilometers(totalDistance).toFixed(2) + ' km';
+      distance = app.utils.milesToKilometers(totalDistance).toFixed(2) + ' 公里';
     } else {
       distance = totalDistance.toFixed(2) + ' miles';
     }

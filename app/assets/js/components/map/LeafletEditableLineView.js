@@ -126,8 +126,8 @@ app.LeafletEditableLineView = Backbone.View.extend({
     // Simple UI for drawing mode. 
     $(app.leaflet._container).addClass('showDrawingCursor');
     $('body').append('<div class="drawingInstructions">' +
-      '<p>Click the map to start drawing a transit line.</p>' +
-      '<p class="tip">Tip: To draw a straight line, hold shift.</p></div>');
+      '<p>想开始描画一条公交线路? 请点击线路图</p>' +
+      '<p class="tip">小贴士：按住shift键画直线</p></div>');
     app.leaflet.on('click', function() {
       $('.drawingInstructions').remove();
     });

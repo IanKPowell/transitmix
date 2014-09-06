@@ -3,19 +3,19 @@ app.Map = Backbone.Model.extend({
 
   defaults: function() {
     var serviceWindows = new app.ServiceWindows([
-      { name: 'Morning',  from: '4am',  to: '6am',  headway: 30, enabled: false },
-      { name: 'AM Peak',  from: '6am',  to: '9am',  headway: 10, enabled: true  },
-      { name: 'Midday',   from: '9am',  to: '3pm',  headway: 15, enabled: true  },
-      { name: 'PM Peak',  from: '3pm',  to: '6pm',  headway: 10, enabled: true  },
-      { name: 'Evening',  from: '6pm',  to: '8pm',  headway: 15, enabled: true  },
-      { name: 'Night',    from: '8pm',  to: '2am', headway: 30, enabled: false },
+      { name: '上午',  from: '4am',  to: '6am',  headway: 30, enabled: false },
+      { name: '上午高峰',  from: '6am',  to: '9am',  headway: 10, enabled: true  },
+      { name: '午间',   from: '9am',  to: '3pm',  headway: 15, enabled: true  },
+      { name: '晚间高峰',  from: '3pm',  to: '6pm',  headway: 10, enabled: true  },
+      { name: '晚间',  from: '6pm',  to: '8pm',  headway: 15, enabled: true  },
+      { name: '夜间',    from: '8pm',  to: '2am', headway: 30, enabled: false },
 
-      { name: 'Sat. AM',  from: '4am',  to: '6am',  headway: 30, enabled: false, isSaturday: true },
-      { name: 'Saturday', from: '6am',  to: '9pm',  headway: 15, enabled: true,  isSaturday: true },
-      { name: 'Sat. PM',  from: '9pm',  to: '2am', headway: 30, enabled: false, isSaturday: true },
-      { name: 'Sun. AM',  from: '4am',  to: '6am',  headway: 30, enabled: false, isSunday: true },
-      { name: 'Sunday',   from: '6am',  to: '9pm',  headway: 15, enabled: true,  isSunday: true },
-      { name: 'Sun. PM',  from: '9pm',  to: '2am', headway: 30, enabled: false, isSunday: true },
+      { name: '周六上午',  from: '4am',  to: '6am',  headway: 30, enabled: false, isSaturday: true },
+      { name: '周六', from: '6am',  to: '9pm',  headway: 15, enabled: true,  isSaturday: true },
+      { name: '周六下午',  from: '9pm',  to: '2am', headway: 30, enabled: false, isSaturday: true },
+      { name: '周日上午',  from: '4am',  to: '6am',  headway: 30, enabled: false, isSunday: true },
+      { name: '周日',   from: '6am',  to: '9pm',  headway: 15, enabled: true,  isSunday: true },
+      { name: '周日下午',  from: '9pm',  to: '2am', headway: 30, enabled: false, isSunday: true },
     ]);
 
     return {
