@@ -1,5 +1,6 @@
 require 'app/routes/validators/max'
 
+require 'app/routes/error_logs'
 require 'app/routes/home'
 require 'app/routes/lines'
 require 'app/routes/maps'

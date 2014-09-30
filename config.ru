@@ -10,6 +10,7 @@ map '/' do
     Transitmix::Routes::Status,
     Transitmix::Routes::Lines,
     Transitmix::Routes::Maps,
-    Transitmix::Routes::Home
+    Transitmix::Routes::Home,
+    Transitmix::Routes::ErrorLogs
   ]
 end

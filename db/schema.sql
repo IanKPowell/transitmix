@@ -30,6 +30,36 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: error_logs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE error_logs (
+    id integer NOT NULL,
+    data text DEFAULT '{}'::text,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: error_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE error_logs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: error_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE error_logs_id_seq OWNED BY error_logs.id;
+
+
+--
 -- Name: lines; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -126,6 +156,13 @@ CREATE TABLE schema_info (
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY error_logs ALTER COLUMN id SET DEFAULT nextval('error_logs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY lines ALTER COLUMN id SET DEFAULT nextval('lines_id_seq'::regclass);
 
 
@@ -134,6 +171,14 @@ ALTER TABLE ONLY lines ALTER COLUMN id SET DEFAULT nextval('lines_id_seq'::regcl
 --
 
 ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclass);
+
+
+--
+-- Name: error_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY error_logs
+    ADD CONSTRAINT error_logs_pkey PRIMARY KEY (id);
 
 
 --
