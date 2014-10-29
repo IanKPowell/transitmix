@@ -20,6 +20,7 @@ app.MapController = app.Controller.extend({
     }
   },
 
+  trailMarkers: [],
   setupViews: function(lineId) {
     app.leaflet.setView(this.map.get('center'), this.map.get('zoomLevel'));
 
@@ -32,6 +33,24 @@ app.MapController = app.Controller.extend({
     // Tiny view for the 'New Map' button in the bottom left
     this.mapExtrasView = new app.MapExtrasView({ model: this.map });
     $('body').append(this.mapExtrasView.render().el);
+
+    // EXPERIMENT: Load and add trails data
+    var center = this.map.get('center');
+    var self = this;
+
+    $.getJSON('https://api.outerspatial.com/v0/trailheads?near_lat=' + center[0] +'&near_lng=' + center[1] + '&opentrails=true', function(response) {
+      response.data.features.forEach(function(trailhead) {
+        var coords = trailhead.geometry.coordinates;
+        var icon = L.MakiMarkers.icon({icon: 'embassy', color: '#055200', size: 'm'});
+        var marker = L.marker([coords[1], coords[0]], { icon: icon });
+        
+        marker.addTo(app.leaflet);
+        marker.bindPopup('Trailhead: ' + trailhead.properties.name);
+        marker.on('click', function() { marker.openPopup(); });
+
+        self.trailMarkers.push(marker);
+      });
+    });
 
     this.selectLine(lineId);
   },
@@ -158,6 +177,9 @@ app.MapController = app.Controller.extend({
   },
 
   teardownViews: function() {
+    // Get rid of the trail markers
+    this.trailMarkers.forEach(function(m) { app.leaflet.removeLayer(m); });
+
     this._teardownSelectionViews();
     this.linesView.remove();
     if (this.nearbyView) this.nearbyView.remove();

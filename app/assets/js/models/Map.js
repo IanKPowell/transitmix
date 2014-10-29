@@ -23,7 +23,7 @@ app.Map = Backbone.Model.extend({
       lines: undefined,
       name: '',
       remixedFromId: undefined,
-      zoomLevel: 14,
+      zoomLevel: 13,
 
       // Line-level settings
       serviceWindows: serviceWindows,

@@ -1,5 +1,6 @@
 //
 //= require patches
+//= require Leaflet.MakiMarkers
 //= require app
 //= require utils
 //= require_tree ./framework
